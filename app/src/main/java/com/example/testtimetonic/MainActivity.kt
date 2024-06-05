@@ -11,6 +11,7 @@ import com.example.testtimetonic.databinding.ActivityMainBinding
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlinx.coroutines.*
+import retrofit2.http.*
 
 class MainActivity : AppCompatActivity() {
     private val urlBase = "https://timetonic.com/"
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleApiResponse(response: ApiResponse) {
-        Log.d("JSON Response", response.toString()) // Imprime la respuesta JSON en el logcat
+        Log.d("JSON Response", response.toString())
         if (response.status == "ok") {
             showToast("Login Successful! OAuth Key: ${response.oauthkey}")
         } else {
@@ -65,10 +66,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun showToast(message: String) {
         runOnUiThread {
             Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
         }
     }
 }
+
+
+
+
